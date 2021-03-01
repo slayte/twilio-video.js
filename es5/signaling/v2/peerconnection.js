@@ -1007,7 +1007,7 @@ var PeerConnectionV2 = function (_StateMachine) {
         offerOptions.iceRestart = true;
       }
 
-      return Promise.all(this._replaceTrackPromises.values()).then(function () {
+      return Promise.all(Array.from(this._replaceTrackPromises.values())).then(function () {
         return _this9._peerConnection.createOffer(offerOptions);
       }).catch(function (error) {
         var errorToThrow = new MediaClientLocalDescFailedError();
